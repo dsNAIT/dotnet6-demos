@@ -10,33 +10,33 @@ using ViewModels;
 
 namespace BLL
 {
-	public class CategoryServices
-	{
-		#region Constructor Dependency Injection
-		private readonly Context Context;
-		public CategoryServices(Context context)
-		{
-			if (context == null)
-				throw new ArgumentNullException();
-			Context = context;
-		}
-		#endregion
+    public class CategoryServices
+    {
+        #region Constructor Dependency Injection
+        private readonly Context Context;
+        public CategoryServices(Context context)
+        {
+            if (context == null)
+                throw new ArgumentNullException();
+            Context = context;
+        }
+        #endregion
 
-		#region Queries
-		public List<SelectionList> ListCategories()
-		{
-			List<SelectionList> info = 
-				Context.Categories
-				.Select(x => new SelectionList
-				{
-					ValueField = x.CategoryId,
-					DisplayField = x.CategoryName
-				})
-				.OrderBy(x => x.DisplayField)
-				.ToList();
-			return info;
-		}
-		#endregion
+        #region Queries
+        public List<SelectionList> ListCategories()
+        {
+            List<SelectionList> info =
+                Context.Categories
+                .Select(x => new SelectionList
+                {
+                    ValueField = x.CategoryId,
+                    DisplayField = x.CategoryName
+                })
+                .OrderBy(x => x.DisplayField)
+                .ToList();
+            return info;
+        }
+        #endregion
 
-	}
+    }
 }
